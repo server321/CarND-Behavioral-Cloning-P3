@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+import h5py
 import os
 import sys
 from sklearn.model_selection import train_test_split
@@ -14,7 +15,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout,Convolution2D,MaxPooling2D,Flatten,Lambda,Cropping2D,ELU
 from keras.optimizers import Adam
 from keras.models import model_from_json
-#from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping
+from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping
 import json
 
 
@@ -311,7 +312,7 @@ def commaai():
 model = CNN()
 
 
-#def get_callbacks():
+def get_callbacks():
     # checkpoint = ModelCheckpoint(
     #     "checkpoints/model-{val_loss:.4f}.h5",
     #     monitor='val_loss', verbose=1, save_weights_only=True,
@@ -322,10 +323,9 @@ model = CNN()
 
     # return [checkpoint, tensorboard]
 
-    #earlystopping = EarlyStopping(monitor='val_loss', min_delta=0,
-    #                              patience=1, verbose=1, mode='auto')
+    earlystopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=1, verbose=1, mode='auto')
     # return [earlystopping, checkpoint]
-    #return [earlystopping]
+    return [earlystopping]
     
 adam = Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 
@@ -343,8 +343,8 @@ if os.path.isfile(model_json) and restart:
 model.compile(optimizer=adam, loss='mse')
 
 # Number of epoches
-nb_epoch = 1
-history = model.fit_generator(train_generator, samples_per_epoch=20000, nb_epoch=nb_epoch, validation_data=(X_validation,Y_validation),verbose=1)
+nb_epoch = 20
+history = model.fit_generator(train_generator, samples_per_epoch=20000, nb_epoch=nb_epoch, validation_data=(X_validation,Y_validation),callbacks=get_callbacks(),verbose=1)
 
 #callbacks=get_callbacks()               
 

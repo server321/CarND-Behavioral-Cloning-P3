@@ -15,15 +15,7 @@ The goals / steps of this project are the following:
 5. Summarize the results with a written report
 
 
-[//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -160,6 +152,8 @@ To avoid overfitting we use EarlyStopping function to stop on the epoch when
 
 Adam optimizer was used for training. 
 
+I slightly modified the drive.py and added in it function crop_image(). The function crop image to comply with (64,64) shape used by our CNN.
+I also changes the speed from 9 to 30 to see results faster.
 
 
 
@@ -168,6 +162,16 @@ Adam optimizer was used for training.
 
 The final step was to run the simulator to see how well the car was driving around track. At the end of the process, on impementing the generator the vehicle is able to drive autonomously around the track without leaving the road.
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=5BTIE_fhReo
-" target="_blank"><img src="http://img.youtube.com/vi/5BTIE_fhReo/0.jpg" 
+To run simulator with model trained type:
+
+```
+python drive.py model.json
+```
+
+Example of video output ([github link to video](https://github.com/server321/CarND-Behavioral-Cloning-P3/video.mp4)).
+
+Example of video output ([youtube](https://youtu.be/JFjVzx-jqGw))
+
+
+<a href="https://youtu.be/JFjVzx-jqGw" target="_blank"><img src="./report/vlcsnap-2017-03-11-14h45m25s238.png" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
