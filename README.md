@@ -33,6 +33,7 @@ My project includes the following files:
 2. drive.py for driving the car in autonomous mode
 3. model.h5 containing a trained convolution neural network 
 4. this README.MD report summarizing the results
+5. Example of captured video file video.mp4
 
 
 ####2. Submission includes functional code
@@ -72,15 +73,15 @@ python model.py
 
 Each time we have capture the road situation we get smapshots of 3 images:
 
-** Center view:**
+**Center view:**
 
 ![](./report/center_2017_03_10_18_05_16_881.jpg)
 
-** Left view:**
+**Left view:**
 
 ![](./report/left_2017_03_10_18_05_16_881.jpg)
 
-** Right view:**
+**Right view:**
 
 ![](./report/right_2017_03_10_18_05_16_881.jpg)
 
@@ -177,12 +178,19 @@ _____
 ####4. Appropriate training data
 
 Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving and data augmentation:
+
 1. Randomly choose training example to avoid sequence distortions
+
 2. Randomly choose left, center or right image
-2. Randomly shear horizontally for road bending simulation
-3. Randomly crop image to simulate car offset
-4. Randomly change brightness to simulate different lightning conditions
-4. Randomly flip image helps us to simulate another direction on the road
+
+3. Randomly shear horizontally for road bending simulation
+
+4. Randomly crop image to simulate car offset
+
+5. Randomly change brightness to simulate different lightning conditions
+
+6. Randomly flip image helps us to simulate another direction on the road
+
 
 
 I use 20% for data validation. I get the loss of 0.0053 on validation set.
