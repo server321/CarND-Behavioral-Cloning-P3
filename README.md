@@ -1,8 +1,10 @@
 #**Behavioral Cloning Project**
 ## Udacity Self Driving Cars
 
+![](./report/main.png)
 
-The goals / steps of this project are the following:
+
+** The goals / steps of this project are the following: **
 
 1. Use the simulator to collect data of good driving behavior
 
@@ -41,7 +43,7 @@ I used at project [Windows 64 Version 1, 12/09/16](https://d17h27t6h515a5.cloudf
 To run the code start the simulator in autonomous mode, open another shell and type
 
 ```
-python drive.py model.h5
+python drive.py model.json
 ```
 
 ####3. Submission code is usable and readable
