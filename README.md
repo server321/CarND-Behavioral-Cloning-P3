@@ -66,6 +66,26 @@ The model is then trained by typing
 python model.py
 ```
 
+###Explore Dataset
+
+Each time we have capture the road situation we get smapshots of 3 images:
+
+** Center view:**
+
+![](./report/center_2017_03_10_18_05_16_881.jpg)
+
+** Left view:**
+
+![](./report/left_2017_03_10_18_05_16_881.jpg)
+
+** Right view:**
+
+![](./report/right_2017_03_10_18_05_16_881.jpg)
+
+
+The training track has some problematic areas, especially with missing lane lines, changing light conditionssharp, corners, exits, bridges etс.
+
+
 
 ###Model Architecture and Training Strategy
 
@@ -123,15 +143,34 @@ And finally we have a single neuron that provides the predicted steering angle.
 
 
 
-####2. Attempts to reduce overfitting in the model
+####2. Reduction of overfitting in the model
 
 The model contains two dropout layers in order to reduce overfitting. 
 
 The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
+To avoid overfitting we use EarlyStopping function to stop training when loss on validation set stop to decrease.
+
 ####3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually.
+The model used an adam optimizer. I try to tune different parameterm for better results.
+Also I collected more data in training mode, because there were problems at certain parts of tracks, especially at those:
+
+**Problem areas**
+_____
+
+
+![](./report/problem_area1.png)
+
+![](./report/problem_area2.png)
+
+![](./report/problem_area3.png)
+
+![](./report/problem_area4.png)
+
+![](./report/problem_area5.png)
+
+
 
 ####4. Appropriate training data
 
@@ -144,11 +183,9 @@ Training data was chosen to keep the vehicle driving on the road. I used a combi
 4. Randomly flip image helps us to simulate another direction on the road
 
 
-
-
 I use 20% for data validation. I get the loss of 0.0053 on validation set.
 
-To avoid overfitting we use EarlyStopping function to stop on the epoch when 
+
 
 Adam optimizer was used for training. 
 
@@ -168,9 +205,9 @@ To run simulator with model trained type:
 python drive.py model.json
 ```
 
-Example of video output ([github link to video](https://github.com/server321/CarND-Behavioral-Cloning-P3/video.mp4)).
+Example of video output file ([github link to video](https://github.com/server321/CarND-Behavioral-Cloning-P3/video.mp4)).
 
-Example of video output ([youtube](https://youtu.be/JFjVzx-jqGw))
+Example of video output youtube (higher resolution and duration) ([youtube](https://youtu.be/JFjVzx-jqGw))
 
 
 <a href="https://youtu.be/JFjVzx-jqGw" target="_blank"><img src="./report/vlcsnap-2017-03-11-14h45m25s238.png" 
